@@ -1,34 +1,46 @@
 #include<stdio.h>
 main(){
 	
-	int i, length, upr=0, lwr=0, num=0, spe=0;
+	int i, envalid = 0, passwordvalid = 0;
 	char id[10], pswd[10];
+	char email[20] = "admin@gmail.com", password[20] = "123456";
 	
 	printf("enter your id :");
 	gets(id);
 	printf("enter your password :");
 	gets(pswd);
 	
-	length = strlen(id);
-	printf("%d" , length);
 	
-	length = strlen(pswd);
-	printf("%d" , length);
-	
-	
-	for(i=0; i<length; i++){
-		if(pswd[i]<=65 && pswd[i]>=90)upr++;
-		if(pswd[i]<=97 && pswd[i]>=122)lwr++;
-		if(pswd[i]<=48 && pswd[i]>=57)num++;
-		if(pswd[i]=='@' || pswd[i]=='#')spe++;
+	for(i=0; id[i]!='\0'; i++)
+	{
+		if(id[i]==email[i])
+		{
+			envalid++;
+		}
+		else 
+		{
+			break;
+		}
 	}
 	
-	if(upr<=0 && lwr<=0 && num<=0 && spe<=0)
+	for(i=0; pswd[i]!='\0'; i++)
+	{
+		if(pswd[i]==password[i])
+		{
+			passwordvalid++;
+		}
+		else 
+		{
+			break;
+		}
+	}
+	
+	if(envalid == strlen(id) && passwordvalid == strlen(pswd))
 	{
 		printf("login succesfully");	
 	}
 	else
 	{
-		printf("enter your valid id password");	
+		printf("Login Failed. Invalid Credentials.");	
 	}
 }
